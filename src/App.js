@@ -60,6 +60,36 @@ function App() {
     }
   };
 
+  function modulus(e) {
+    e.preventDefault();
+    const number = getInputValue();
+    if (number === null) return;
+
+    if (number === 0) {
+      alert("Cannot perform modulus with zero!");
+    } else {
+      setResult((result) => result % number);
+    }
+  }
+
+  function floor(e) {
+    e.preventDefault();
+    setResult((result) => Math.floor(result));
+  }
+
+  function ceil(e) {
+    e.preventDefault();
+    setResult((result) => Math.ceil(result));
+  }
+
+  function power(e) {
+    e.preventDefault();
+    const number = getInputValue();
+    if (number !== null) {
+      setResult((result) => Math.pow(result, number));
+    }
+  }
+
   function resetInput(e) { 
     e.preventDefault(); 
     inputRef.current.value = "";
@@ -88,6 +118,10 @@ function App() {
         <button onClick={minus}>Subtract</button> 
         <button onClick={times}>Multiply</button> 
         <button onClick={divide}>Divide</button> 
+        <button onClick={modulus}>Modulus</button> 
+        <button onClick={power}>Power (result ^ input)</button> 
+        <button onClick={floor}>Floor</button> 
+        <button onClick={ceil}>Ceil</button> 
         <button onClick={resetInput}>Reset Input</button> 
         <button onClick={resetResult}>Reset Result</button> 
       </form> 
